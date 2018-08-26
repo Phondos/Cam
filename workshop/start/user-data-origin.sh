@@ -28,10 +28,9 @@ cd /tmp && \
 
 yum -y install \
   nginx && \
-#  yes | get_reference_source -p nginx && \
+  yum -y update && \
   yum -y remove nginx && \
-  yumdownloader --source nginx
-#  rpm -Uvh /usr/src/srpm/debug/nginx*.rpm
+  yumdownloader --source nginx && \
   rpm -Uvh /tmp/nginx*.rpm
 
 sed -i "s|configure|configure --add-module=/tmp/nginx-rtmp-module|" /root/rpmbuild/SPECS/nginx.spec
@@ -55,12 +54,12 @@ echo "include /etc/nginx/rtmp.d/*.conf;" >> /etc/nginx/nginx.conf
 
 sed -i "s|worker_processes auto|worker_processes 1|g" /etc/nginx/nginx.conf
 
-cp -av /root/immersive-media-refarch/workshop/start/origin/nginx/default.d/rtmp.conf /etc/nginx/default.d/
-cp -av /root/immersive-media-refarch/workshop/start/origin/nginx/rtmp.d/rtmp.conf /etc/nginx/rtmp.d/
-cp -av /root/immersive-media-refarch/workshop/start/origin/awslogs/awslogs.conf /etc/awslogs/
-cp -av /root/immersive-media-refarch/workshop/start/origin/bin/record-postprocess.sh /usr/local/bin/
-cp -av /root/immersive-media-refarch/workshop/start/origin/init/spot-instance-termination-notice-handler.conf /etc/init/spot-instance-termination-notice-handler.conf
-cp -av /root/immersive-media-refarch/workshop/start/origin/bin/spot-instance-termination-notice-handler.sh /usr/local/bin/
+cp -av /root/Cam/workshop/start/origin/nginx/default.d/rtmp.conf /etc/nginx/default.d/
+cp -av /root/Cam/workshop/start/origin/nginx/rtmp.d/rtmp.conf /etc/nginx/rtmp.d/
+cp -av /root/Cam/workshop/start/origin/awslogs/awslogs.conf /etc/awslogs/
+cp -av /root/Cam/workshop/start/origin/bin/record-postprocess.sh /usr/local/bin/
+cp -av /root/Cam/workshop/start/origin/init/spot-instance-termination-notice-handler.conf /etc/init/spot-instance-termination-notice-handler.conf
+cp -av /root/Cam/workshop/start/origin/bin/spot-instance-termination-notice-handler.sh /usr/local/bin/
 
 chmod +x /usr/local/bin/spot-instance-termination-notice-handler.sh
 

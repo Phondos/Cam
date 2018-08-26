@@ -318,7 +318,7 @@ Resources:
                 REGION=${AWS::Region} APPLICATIONLOADBALANCERTARGETGROUP=${applicationLoadBalancerTargetGroup}
                 CLOUDWATCHLOGSGROUP=${cloudWatchLogsGroup} EGRESSBUCKETWEBSITEURL=${transcodingEgressBucket.WebsiteURL}
                 PRIMARYORIGINPRIVATEIP=${primaryOriginElasticNetworkInterface.PrimaryPrivateIpAddress}
-                WAITCONDITIONHANDLE="${edgeCacheSpotFleetWaitConditionHandle}" bash /root/immersive-media-refarch/workshop/start/user-data-edge.sh
+                WAITCONDITIONHANDLE="${edgeCacheSpotFleetWaitConditionHandle}" bash /root/Cam/workshop/start/user-data-edge.sh
 
                 '
         ReplaceUnhealthyInstances: true
@@ -481,7 +481,7 @@ Resources:
 
                 REGION=${AWS::Region} INGRESSBUCKET=${transcodingIngressBucket} CLOUDWATCHLOGSGROUP=${cloudWatchLogsGroup}
                 ENI_ID=${primaryOriginElasticNetworkInterface} ALLOCATION_ID=${primaryOriginElasticIp.AllocationId}
-                WAITCONDITIONHANDLE="${primaryOriginSpotFleetWaitConditionHandle}" bash /root/immersive-media-refarch/workshop/start/user-data-origin.sh
+                WAITCONDITIONHANDLE="${primaryOriginSpotFleetWaitConditionHandle}" bash /root/Cam/workshop/start/user-data-origin.sh
 
                 '
         ReplaceUnhealthyInstances: true
@@ -894,7 +894,7 @@ Resources:
 
                 REGION=${AWS::Region} TRANSCODINGINGRESSBUCKET=${transcodingIngressBucket} TRANSCODINGEGRESSBUCKET=${transcodingEgressBucket}
                 TRANSCODINGQUEUE=${transcodingQueue} CLOUDWATCHLOGSGROUP=${cloudWatchLogsGroup}
-                WAITCONDITIONHANDLE="${transcodingSpotFleetWaitConditionHandle}" bash /root/immersive-media-refarch/workshop/start/user-data-transcoding.sh
+                WAITCONDITIONHANDLE="${transcodingSpotFleetWaitConditionHandle}" bash /root/Cam/workshop/start/user-data-transcoding.sh
 
                 '
         ReplaceUnhealthyInstances: true

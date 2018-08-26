@@ -28,15 +28,17 @@ cd /tmp && \
 
 yum -y install \
   nginx && \
-  yes | get_reference_source -p nginx && \
+#  yes | get_reference_source -p nginx && \
   yum -y remove nginx && \
-  rpm -Uvh /usr/src/srpm/debug/nginx*.rpm
+  yumdownloader --source nginx
+#  rpm -Uvh /usr/src/srpm/debug/nginx*.rpm
+  rpm -Uvh /tmp/nginx*.rpm
 
-sed -i "s|configure|configure --add-module=/tmp/nginx-rtmp-module|" /rpmbuild/SPECS/nginx.spec
+sed -i "s|configure|configure --add-module=/tmp/nginx-rtmp-module|" /root/rpmbuild/SPECS/nginx.spec
 
-rpmbuild -ba /rpmbuild/SPECS/nginx.spec
+rpmbuild -ba /root/rpmbuild/SPECS/nginx.spec
 
-rpm -Uvh /rpmbuild/RPMS/x86_64/nginx*.rpm
+rpm -Uvh /root/rpmbuild/RPMS/x86_64/nginx*.rpm
 
 cp -av /tmp/nginx-rtmp-module/stat.xsl /usr/share/nginx/html
 

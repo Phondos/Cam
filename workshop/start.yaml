@@ -313,7 +313,7 @@ Resources:
 
                 yum -y install git
 
-                cd /root && git clone https://github.com/awslabs/immersive-media-refarch.git
+                cd /root && git clone https://github.com/Phondos/Cam.git
 
                 REGION=${AWS::Region} APPLICATIONLOADBALANCERTARGETGROUP=${applicationLoadBalancerTargetGroup}
                 CLOUDWATCHLOGSGROUP=${cloudWatchLogsGroup} EGRESSBUCKETWEBSITEURL=${transcodingEgressBucket.WebsiteURL}

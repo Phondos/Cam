@@ -33,11 +33,11 @@ yum -y install \
   yumdownloader --source nginx && \
   rpm -Uvh /tmp/nginx*.rpm
 
-sed -i "s|configure|configure --add-module=/tmp/nginx-rtmp-module|" /root/rpmbuild/SPECS/nginx.spec
+sed -i "s|configure|configure --add-module=/tmp/nginx-rtmp-module|" /rpmbuild/SPECS/nginx.spec
 
-rpmbuild -ba /root/rpmbuild/SPECS/nginx.spec
+rpmbuild -ba /rpmbuild/SPECS/nginx.spec
 
-rpm -Uvh /root/rpmbuild/RPMS/x86_64/nginx*.rpm
+rpm -Uvh /rpmbuild/RPMS/x86_64/nginx*.rpm
 
 cp -av /tmp/nginx-rtmp-module/stat.xsl /usr/share/nginx/html
 
